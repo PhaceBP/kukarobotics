@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <echo>JAVA_HOME variable is : D:\apache-maven-3.5.0\bin\..</echo>
+  <echo>Spring framework.version variable is : 4.3.8.RELEASE</echo>
+</target>
+</project>

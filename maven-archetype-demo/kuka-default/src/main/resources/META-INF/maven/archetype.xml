@@ -1,0 +1,9 @@
+<archetype>
+  <id>kuka-default</id>
+  <sources>
+    <source>src/main/java/com/kukarotbotics/app/App.java</source>
+  </sources>
+  <testSources>
+    <source>src/test/java/com/kukarotbotics/app/AppTest.java</source>
+  </testSources>
+</archetype>

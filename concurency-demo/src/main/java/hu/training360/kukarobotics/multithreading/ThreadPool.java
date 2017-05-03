@@ -100,5 +100,7 @@ public class ThreadPool {
 			pool.execute(test);
 		}
 		
+		pool.stop();
+		
 	}
 }

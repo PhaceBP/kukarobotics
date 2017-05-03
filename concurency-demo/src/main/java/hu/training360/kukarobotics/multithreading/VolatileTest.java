@@ -7,7 +7,7 @@ public class VolatileTest {
 
 	private static final Logger LOGGER = Logger.getLogger(VolatileTest.class.getName());
 
-	private static int MY_INT = 0;
+	private static volatile int MY_INT = 0;
 
 	public static void main(String[] args) {
 		new ChangeListener().start();

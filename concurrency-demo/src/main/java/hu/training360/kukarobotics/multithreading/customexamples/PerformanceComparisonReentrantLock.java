@@ -1,10 +1,9 @@
 package hu.training360.kukarobotics.multithreading.customexamples;
 
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class PerformanceComparisonNoReentrantLock {
+public class PerformanceComparisonReentrantLock {
 
 	static class Counter {
 

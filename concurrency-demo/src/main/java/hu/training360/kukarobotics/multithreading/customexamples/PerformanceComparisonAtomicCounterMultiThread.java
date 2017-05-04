@@ -2,7 +2,7 @@ package hu.training360.kukarobotics.multithreading.customexamples;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-public class PerformanceComparisonNoAtomicCounter {
+public class PerformanceComparisonAtomicCounterMultiThread {
 
 	static class Counter {
 
@@ -21,13 +21,29 @@ public class PerformanceComparisonNoAtomicCounter {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		Counter c = new Counter(new AtomicLong());
+		
+		Runnable r = () -> {
+
+			for (long i = 0; i < 500000000; i++) {
+				c.incrementByOne();
+			}
+			
+		};
+		
+		Thread w1 = new Thread(r);
+		Thread w2 = new Thread(r);
+		
 		long startTime = System.currentTimeMillis();
-		for (long i = 0; i < 1000000000L; i++) {
-			c.incrementByOne();
-		}
+		
+		w1.start();
+		w2.start();
+		
+		w1.join();
+		w2.join();
+		
 		long endTime = System.currentTimeMillis();
 
 		System.out.println("Time taken : " + (endTime - startTime) + " ms");

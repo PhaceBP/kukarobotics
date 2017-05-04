@@ -1,0 +1,17 @@
+Time taken : 345 ms
+Result is : 1000000000 --> single thread no sync
+
+Time taken : 4781 ms
+Result is : 1000000000 --> single thread volatile
+
+Time taken : 4804 ms
+Result is : 1000000000 --> single thread atomic counter
+
+Time taken : 14903 ms
+Result is : 1000000000 --> single thread reentrant lock
+
+Time taken : 18113 ms
+Result is : 1000000000 --> multi thread atomic counter
+
+Time taken : 50819 ms
+Result is : 1000000000 --> multi thread reentrant lock

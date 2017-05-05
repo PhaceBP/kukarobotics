@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.kukarobotics.reflectiondemo.examples.BenchMarked;
+import com.kukarobotics.reflectiondemo.examples.Secure;
+
 public class KukaBeanFactory {
 
 	private static final Map<String, BeanDefinition> BEAN_DEF_MAP = new HashMap<String, BeanDefinition>();
@@ -68,9 +71,9 @@ public class KukaBeanFactory {
 	private static Object createObject(BeanDefinition def) {
 
 		Object instance = null;
-
+		Class<?> beanClazz = null;
 		try {
-			Class<?> beanClazz = Class.forName(def.getClassName());
+			beanClazz = Class.forName(def.getClassName());
 			instance = beanClazz.newInstance();
 			List<Field> fields = getAllField(new ArrayList<Field>(), beanClazz);
 
@@ -82,6 +85,14 @@ public class KukaBeanFactory {
 			ex.printStackTrace();
 		}
 
+		if (beanClazz.getAnnotation(Secure.class) != null) {
+
+			instance = ProxyFactoryBean.createSecurityProxy(instance);
+		}
+		if (beanClazz.getAnnotation(BenchMarked.class) != null) {
+
+			instance = ProxyFactoryBean.createBenchMarkProxy(instance);
+		}
 		return instance;
 	}
 

@@ -1,8 +1,13 @@
 package com.kukarobotics.di.test;
 
 import com.kukarobotics.di.PropertySource;
+import com.kukarobotics.reflectiondemo.examples.BenchMarked;
+import com.kukarobotics.reflectiondemo.examples.Roles;
+import com.kukarobotics.reflectiondemo.examples.Secure;
 
-public class DefaultService {
+@Secure(role = Roles.ADMIN)
+@BenchMarked
+public class DefaultService implements Service {
 
 	@PropertySource(propertyName = "os.name")
 	private String osName;
